@@ -1,0 +1,1561 @@
+2026-08-24 20:56:04.701 - INFO: [1mQLever server v0.6.0, compiled on Mon Aug 24 22:29:09 CEST 2026 using git hash 6c5861a[22m
+2026-08-24 20:56:04.703 - INFO: Cleanup of previous index directories after each rebuild enabled (--rebuild-keep-previous-index-dirs original-and-most-recent)
+2026-08-24 20:56:04.709 - INFO: The git hash used to build this index was "6c5861a"
+2026-08-24 20:56:04.709 - INFO: Reading vocabulary from file weather.vocabulary.words ...
+2026-08-24 20:56:04.709 - INFO: Done, number of words: 41
+2026-08-24 20:56:04.709 - INFO: Number of words in internal vocabulary (these are also part of the external vocabulary): 5
+2026-08-24 20:56:04.710 - INFO: Registered PSO permutation: #relations = 1, #blocks = 1, #triples = 8
+2026-08-24 20:56:04.710 - INFO: Registered PSO permutation: #relations = 6, #blocks = 1, #triples = 48
+2026-08-24 20:56:04.711 - INFO: Registered POS permutation: #relations = 1, #blocks = 1, #triples = 8
+2026-08-24 20:56:04.711 - INFO: Registered POS permutation: #relations = 6, #blocks = 1, #triples = 48
+2026-08-24 20:56:04.711 - INFO: Registered OPS permutation: #relations = 39, #blocks = 1, #triples = 48
+2026-08-24 20:56:04.711 - INFO: Registered OSP permutation: #relations = 39, #blocks = 1, #triples = 48
+2026-08-24 20:56:04.711 - INFO: Registered SPO permutation: #relations = 8, #blocks = 1, #triples = 48
+2026-08-24 20:56:04.711 - INFO: Registered SOP permutation: #relations = 8, #blocks = 1, #triples = 48
+2026-08-24 20:56:04.711 - INFO: Reading patterns from file weather.index.patterns ...
+2026-08-24 20:56:04.711 - INFO: Sorting random result tables to estimate the sorting performance of this machine ...
+2026-08-24 20:56:04.713 - INFO: Initializing server ...
+2026-08-24 20:56:04.713 - INFO: Access token for restricted API calls is "tBI9K8kWRsSt"
+2026-08-24 20:56:04.713 - INFO: The server is ready, listening for requests on port 7011 ...
+2026-08-24 21:00:35.418 - INFO: 
+2026-08-24 21:00:35.419 - INFO: Request received via GET, no content type specified
+2026-08-24 21:00:35.440 - INFO: Processing the following SPARQL query:
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <https://schema.org/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?name ?condition ?temperatureC ?humidity WHERE { ?name wx:country 'US' ; wx:name 'Chicago' . ?name wx:temperatureC ?temperatureC ; wx:condition ?condition ; wx:humidity ?humidity . } LIMIT 10
+2026-08-24 21:00:35.443 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-24 21:00:35.455 - INFO: Query planning done in 35 ms
+2026-08-24 21:00:35.461 - INFO: Result has size 0 x 4
+2026-08-24 21:00:35.463 - INFO: Done processing query and sending result, total time was 43 ms
+2026-08-24 21:01:18.769 - INFO: 
+2026-08-24 21:01:18.770 - INFO: Request received via GET, no content type specified
+2026-08-24 21:01:18.776 - INFO: Processing the following SPARQL query:
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <https://schema.org/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?name WHERE { ?city wx:temperatureC ?temp . } ORDER BY DESC(?temp) LIMIT 3
+2026-08-24 21:01:18.777 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-24 21:01:18.782 - INFO: Query planning done in 12 ms
+2026-08-24 21:01:18.791 - INFO: Result has size 8 x 2
+2026-08-24 21:01:18.791 - WARN: The variable "?name" was found in the original query, but not in the execution tree. This is likely a bug
+2026-08-24 21:01:18.792 - INFO: Done processing query and sending result, total time was 22 ms
+2026-08-24 21:02:09.799 - INFO: 
+2026-08-24 21:02:09.799 - INFO: Request received via GET, no content type specified
+2026-08-24 21:02:09.803 - INFO: Processing the following SPARQL query:
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <https://schema.org/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?name ?country ?temperatureC ?condition ?humidity WHERE { ?city wx:condition ?condition . FILTER (STR(?condition) = 'raining' || STR(?condition) = 'snowing') } LIMIT 10
+2026-08-24 21:02:09.803 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-24 21:02:09.806 - INFO: Query planning done in 6 ms
+2026-08-24 21:02:09.811 - INFO: Result has size 0 x 2
+2026-08-24 21:02:09.811 - WARN: The variable "?name" was found in the original query, but not in the execution tree. This is likely a bug
+2026-08-24 21:02:09.811 - WARN: The variable "?country" was found in the original query, but not in the execution tree. This is likely a bug
+2026-08-24 21:02:09.812 - WARN: The variable "?temperatureC" was found in the original query, but not in the execution tree. This is likely a bug
+2026-08-24 21:02:09.812 - WARN: The variable "?humidity" was found in the original query, but not in the execution tree. This is likely a bug
+2026-08-24 21:02:09.812 - INFO: Done processing query and sending result, total time was 12 ms
+2026-08-25 10:39:32.540 - INFO: 
+2026-08-25 10:39:32.542 - INFO: Request received via POST, content type "application/x-www-form-urlencoded"
+2026-08-25 10:39:32.557 - INFO: Processing the following SPARQL query:
+SELECT (COUNT(*) AS ?c) WHERE {?s ?p ?o}
+2026-08-25 10:39:32.560 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:39:32.564 - INFO: Query planning done in 20 ms
+2026-08-25 10:39:32.566 - INFO: Result has size 1 x 1
+2026-08-25 10:39:32.568 - INFO: Done processing query and sending result, total time was 25 ms
+2026-08-25 10:39:51.724 - INFO: 
+2026-08-25 10:39:51.726 - INFO: Request received via GET, no content type specified
+2026-08-25 10:39:51.743 - INFO: Processing the following SPARQL query:
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX schema: <https://schema.org/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+
+PREFIX wx: <http://example.org/weather#> SELECT DISTINCT ?v WHERE { ?c wx:condition ?v }
+2026-08-25 10:39:51.746 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:39:51.752 - INFO: Query planning done in 25 ms
+2026-08-25 10:39:51.754 - INFO: Result has unknown size (not computed yet)
+2026-08-25 10:39:51.755 - INFO: Done processing query and sending result, total time was 29 ms
+2026-08-25 10:40:41.814 - INFO: 
+2026-08-25 10:40:41.815 - INFO: Request received via GET, no content type specified
+2026-08-25 10:40:41.818 - INFO: Processing the following SPARQL query:
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX schema: <https://schema.org/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?name ?condition ?temperatureC WHERE { ?name wx:country 'US' ; wx:name 'Chicago' . ?name wx:temperatureC ?temperatureC . ?name wx:condition ?condition . } LIMIT 10
+2026-08-25 10:40:41.818 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:40:41.821 - INFO: Query planning done in 6 ms
+2026-08-25 10:40:41.823 - INFO: Result has size 0 x 3
+2026-08-25 10:40:41.823 - INFO: Done processing query and sending result, total time was 8 ms
+2026-08-25 10:41:45.193 - INFO: 
+2026-08-25 10:41:45.195 - INFO: Request received via GET, no content type specified
+2026-08-25 10:41:45.198 - INFO: Processing the following SPARQL query:
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX schema: <https://schema.org/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?name ?condition ?temperatureC WHERE { ?name wx:country 'US' ; wx:name 'Chicago' . ?name wx:temperatureC ?temperatureC . ?name wx:condition ?condition . FILTER(?temperatureC > 0) } LIMIT 10
+2026-08-25 10:41:45.199 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:41:45.205 - INFO: Query planning done in 9 ms
+2026-08-25 10:41:45.206 - INFO: Result has size 0 x 3
+2026-08-25 10:41:45.207 - INFO: Done processing query and sending result, total time was 12 ms
+2026-08-25 10:42:51.295 - INFO: 
+2026-08-25 10:42:51.297 - INFO: Request received via GET, no content type specified
+2026-08-25 10:42:51.301 - INFO: Processing the following SPARQL query:
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX schema: <https://schema.org/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?city WHERE { ?city wx:temperatureC ?temp . FILTER(?city = <http://example.org/weather#Chicago>) } LIMIT 10
+2026-08-25 10:42:51.301 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:42:51.302 - INFO: Query planning done in 5 ms
+2026-08-25 10:42:51.304 - INFO: Result has size 0 x 2
+2026-08-25 10:42:51.305 - INFO: Done processing query and sending result, total time was 7 ms
+2026-08-25 10:43:51.499 - INFO: 
+2026-08-25 10:43:51.500 - INFO: Request received via GET, no content type specified
+2026-08-25 10:43:51.505 - INFO: Processing the following SPARQL query:
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX schema: <https://schema.org/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?city ?condition WHERE { ?city wx:condition ?condition . ?city wx:name "Chicago" . FILTER (regex(str(?condition), "Raining|Snowy", "i")) } LIMIT 10
+2026-08-25 10:43:51.505 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:43:51.509 - INFO: Query planning done in 8 ms
+2026-08-25 10:43:51.515 - INFO: Result has size 0 x 2
+2026-08-25 10:43:51.516 - INFO: Done processing query and sending result, total time was 15 ms
+2026-08-25 10:44:24.500 - INFO: 
+2026-08-25 10:44:24.501 - INFO: Request received via GET, no content type specified
+2026-08-25 10:44:24.503 - INFO: Processing the following SPARQL query:
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX schema: <https://schema.org/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?city ?condition WHERE { ?city wx:condition ?condition . ?city wx:name "Chicago" . FILTER (regex(str(?condition), "Rainy|Snowy", "i")) } LIMIT 10
+2026-08-25 10:44:24.504 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:44:24.506 - INFO: Query planning done in 4 ms
+2026-08-25 10:44:24.507 - INFO: Result has size 0 x 2
+2026-08-25 10:44:24.508 - INFO: Done processing query and sending result, total time was 6 ms
+2026-08-25 10:47:32.462 - INFO: 
+2026-08-25 10:47:32.462 - INFO: Request received via GET, no content type specified
+2026-08-25 10:47:32.465 - INFO: Processing the following SPARQL query:
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX schema: <https://schema.org/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+
+PREFIX wx: <http://example.org/weather#> SELECT DISTINCT ?v WHERE { ?c wx:condition ?v }
+2026-08-25 10:47:32.465 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:47:32.466 - INFO: Query planning done in 3 ms
+2026-08-25 10:47:32.468 - INFO: Result has size 6 x 2
+2026-08-25 10:47:32.468 - INFO: Done processing query and sending result, total time was 6 ms
+2026-08-25 10:47:32.471 - INFO: 
+2026-08-25 10:47:32.471 - INFO: Request received via GET, no content type specified
+2026-08-25 10:47:32.472 - INFO: Processing the following SPARQL query:
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX schema: <https://schema.org/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+
+PREFIX wx: <http://example.org/weather#> SELECT DISTINCT ?v WHERE { ?c wx:country ?v }
+2026-08-25 10:47:32.472 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:47:32.472 - INFO: Query planning done in 1 ms
+2026-08-25 10:47:32.473 - INFO: Result has unknown size (not computed yet)
+2026-08-25 10:47:32.473 - INFO: Done processing query and sending result, total time was 2 ms
+2026-08-25 10:51:31.902 - INFO: 
+2026-08-25 10:51:31.903 - INFO: Request received via GET, no content type specified
+2026-08-25 10:51:31.904 - INFO: Processing the following SPARQL query:
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX schema: <https://schema.org/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+
+PREFIX wx: <http://example.org/weather#> 
+SELECT ?city WHERE { 
+  ?city wx:name "Chicago" 
+} 
+LIMIT 10
+2026-08-25 10:51:31.904 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:51:31.905 - INFO: Query planning done in 2 ms
+2026-08-25 10:51:31.906 - INFO: Result has unknown size (not computed yet)
+2026-08-25 10:51:31.907 - INFO: Done processing query and sending result, total time was 4 ms
+2026-08-25 10:53:39.710 - INFO: 
+2026-08-25 10:53:39.711 - INFO: Request received via GET, no content type specified
+2026-08-25 10:53:39.714 - INFO: Processing the following SPARQL query:
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX schema: <https://schema.org/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?city ?condition WHERE { ?city wx:name "Chicago" ; wx:condition ?condition . FILTER (regex(str(?condition), "Rainy|Snowy", "i")) } LIMIT 10
+2026-08-25 10:53:39.715 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:53:39.717 - INFO: Query planning done in 5 ms
+2026-08-25 10:53:39.717 - INFO: Result has size 0 x 2
+2026-08-25 10:53:39.718 - INFO: Done processing query and sending result, total time was 6 ms
+2026-08-25 10:54:11.882 - INFO: 
+2026-08-25 10:54:11.882 - INFO: Request received via GET, no content type specified
+2026-08-25 10:54:11.884 - INFO: Processing the following SPARQL query:
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX schema: <https://schema.org/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?city ?condition WHERE { ?city wx:name "Chicago" ; wx:condition ?condition . FILTER (regex(str(?condition), "Rainy|Snowy", "i")) } LIMIT 10000
+2026-08-25 10:54:11.884 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:54:11.885 - INFO: Query planning done in 2 ms
+2026-08-25 10:54:11.885 - INFO: Result has size 0 x 2
+2026-08-25 10:54:11.886 - INFO: Done processing query and sending result, total time was 3 ms
+2026-08-25 10:56:28.831 - INFO: 
+2026-08-25 10:56:28.832 - INFO: Request received via GET, no content type specified
+2026-08-25 10:56:28.834 - INFO: Processing the following SPARQL query:
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX schema: <https://schema.org/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?name ?condition ?temperatureC ?humidity WHERE { ?name wx:country "US" ; wx:name "Chicago" . ?name wx:temperatureC ?temperatureC ; wx:condition ?condition ; wx:humidity ?humidity . } LIMIT 10
+2026-08-25 10:56:28.834 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:56:28.838 - INFO: Query planning done in 5 ms
+2026-08-25 10:56:28.838 - INFO: Result has size 0 x 4
+2026-08-25 10:56:28.839 - INFO: Done processing query and sending result, total time was 6 ms
+2026-08-25 10:56:28.842 - INFO: 
+2026-08-25 10:56:28.842 - INFO: Request received via GET, no content type specified
+2026-08-25 10:56:28.843 - INFO: Processing the following SPARQL query:
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX schema: <https://schema.org/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+PREFIX wx: <http://example.org/weather#> SELECT DISTINCT ?v WHERE { ?c wx:condition ?v }
+2026-08-25 10:56:28.843 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:56:28.844 - INFO: Query planning done in 2 ms
+2026-08-25 10:56:28.845 - INFO: Result has size 6 x 2
+2026-08-25 10:56:28.845 - INFO: Done processing query and sending result, total time was 3 ms
+2026-08-25 10:56:28.846 - INFO: 
+2026-08-25 10:56:28.847 - INFO: Request received via GET, no content type specified
+2026-08-25 10:56:28.848 - INFO: Processing the following SPARQL query:
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX schema: <https://schema.org/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+PREFIX wx: <http://example.org/weather#> SELECT DISTINCT ?v WHERE { ?c wx:country ?v }
+2026-08-25 10:56:28.848 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:56:28.849 - INFO: Query planning done in 1 ms
+2026-08-25 10:56:28.849 - INFO: Result has size 8 x 2
+2026-08-25 10:56:28.849 - INFO: Done processing query and sending result, total time was 2 ms
+2026-08-25 10:56:45.476 - INFO: 
+2026-08-25 10:56:45.477 - INFO: Request received via GET, no content type specified
+2026-08-25 10:56:45.478 - INFO: Processing the following SPARQL query:
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX schema: <https://schema.org/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?name ?condition ?temperatureC ?humidity WHERE { ?name wx:country "United States" ; wx:name "Chicago" . ?name wx:temperatureC ?temperatureC ; wx:condition ?condition ; wx:humidity ?humidity . } LIMIT 1000
+2026-08-25 10:56:45.478 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:56:45.484 - INFO: Query planning done in 7 ms
+2026-08-25 10:56:45.486 - INFO: Result has size 1 x 4
+2026-08-25 10:56:45.488 - INFO: Done processing query and sending result, total time was 11 ms
+2026-08-25 10:57:48.814 - INFO: 
+2026-08-25 10:57:48.815 - INFO: Request received via GET, no content type specified
+2026-08-25 10:57:48.818 - INFO: Processing the following SPARQL query:
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX schema: <https://schema.org/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?city WHERE { ?city wx:temperatureC ?temp . FILTER(?city = <http://example.org/weather#Chicago>) } LIMIT 10
+2026-08-25 10:57:48.818 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:57:48.820 - INFO: Query planning done in 4 ms
+2026-08-25 10:57:48.820 - INFO: Result has size 0 x 2
+2026-08-25 10:57:48.821 - INFO: Done processing query and sending result, total time was 5 ms
+2026-08-25 10:58:04.848 - INFO: 
+2026-08-25 10:58:04.848 - INFO: Request received via GET, no content type specified
+2026-08-25 10:58:04.849 - INFO: Processing the following SPARQL query:
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX schema: <https://schema.org/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?city WHERE { ?city wx:name "Chicago"; wx:temperatureC ?temp . } LIMIT 10000
+2026-08-25 10:58:04.849 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:58:04.851 - INFO: Query planning done in 2 ms
+2026-08-25 10:58:04.851 - INFO: Result has size 1 x 2
+2026-08-25 10:58:04.852 - INFO: Done processing query and sending result, total time was 3 ms
+2026-08-25 10:58:56.933 - INFO: 
+2026-08-25 10:58:56.934 - INFO: Request received via GET, no content type specified
+2026-08-25 10:58:56.939 - INFO: Processing the following SPARQL query:
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX schema: <https://schema.org/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?name ?temperatureC WHERE { ?city wx:name ?name . ?city wx:temperatureC ?temperatureC . } ORDER BY DESC(?temperatureC) LIMIT 3
+2026-08-25 10:58:56.944 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 10:58:56.960 - INFO: Query planning done in 26 ms
+2026-08-25 10:58:56.966 - INFO: Result has size 8 x 3
+2026-08-25 10:58:56.969 - INFO: Done processing query and sending result, total time was 35 ms
+2026-08-25 11:02:29.358 - INFO: 
+2026-08-25 11:02:29.359 - INFO: Request received via GET, no content type specified
+2026-08-25 11:02:29.360 - INFO: Processing the following SPARQL query:
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <https://schema.org/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+PREFIX wx: <http://example.org/weather#> 
+SELECT ?name ?temperatureC ?condition ?humidity WHERE { ?name wx:country "US" ; wx:name "Chicago" . ?name wx:temperatureC ?temperatureC ; wx:condition ?condition ; wx:humidity ?humidity . } LIMIT 10
+2026-08-25 11:02:29.361 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 11:02:29.364 - INFO: Query planning done in 5 ms
+2026-08-25 11:02:29.365 - INFO: Result has size 0 x 4
+2026-08-25 11:02:29.365 - INFO: Done processing query and sending result, total time was 6 ms
+2026-08-25 11:02:29.368 - INFO: 
+2026-08-25 11:02:29.368 - INFO: Request received via GET, no content type specified
+2026-08-25 11:02:29.369 - INFO: Processing the following SPARQL query:
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <https://schema.org/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+PREFIX wx: <http://example.org/weather#> SELECT DISTINCT ?v WHERE { ?c wx:condition ?v }
+2026-08-25 11:02:29.369 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 11:02:29.369 - INFO: Query planning done in 0 ms
+2026-08-25 11:02:29.369 - INFO: Result has size 6 x 2
+2026-08-25 11:02:29.370 - INFO: Done processing query and sending result, total time was 1 ms
+2026-08-25 11:02:29.374 - INFO: 
+2026-08-25 11:02:29.374 - INFO: Request received via GET, no content type specified
+2026-08-25 11:02:29.374 - INFO: Processing the following SPARQL query:
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <https://schema.org/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+PREFIX wx: <http://example.org/weather#> SELECT DISTINCT ?v WHERE { ?c wx:country ?v }
+2026-08-25 11:02:29.374 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 11:02:29.375 - INFO: Query planning done in 0 ms
+2026-08-25 11:02:29.375 - INFO: Result has size 8 x 2
+2026-08-25 11:02:29.375 - INFO: Done processing query and sending result, total time was 1 ms
+2026-08-25 11:02:50.397 - INFO: 
+2026-08-25 11:02:50.397 - INFO: Request received via GET, no content type specified
+2026-08-25 11:02:50.398 - INFO: Processing the following SPARQL query:
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <https://schema.org/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+PREFIX wx: <http://example.org/weather#>
+SELECT ?name ?temperatureC ?condition ?humidity WHERE { ?name wx:country "United States" ; wx:name "Chicago" . ?name wx:temperatureC ?temperatureC ; wx:condition ?condition ; wx:humidity ?humidity . } LIMIT 10
+2026-08-25 11:02:50.398 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 11:02:50.402 - INFO: Query planning done in 4 ms
+2026-08-25 11:02:50.402 - INFO: Result has size 1 x 4
+2026-08-25 11:02:50.403 - INFO: Done processing query and sending result, total time was 5 ms
+2026-08-25 11:06:30.261 - INFO: 
+2026-08-25 11:06:30.262 - INFO: Request received via GET, no content type specified
+2026-08-25 11:06:30.271 - INFO: Processing the following SPARQL query:
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <https://schema.org/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?city ?condition WHERE { ?city wx:condition ?condition . FILTER (REGEX(?city, "Chicago") && (CONTAINS(str(?condition), "raining") || CONTAINS(str(?condition), "snowing"))) } LIMIT 10
+2026-08-25 11:06:30.272 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 11:06:30.274 - INFO: Query planning done in 11 ms
+2026-08-25 11:06:30.277 - INFO: Result has size 0 x 2
+2026-08-25 11:06:30.278 - INFO: Done processing query and sending result, total time was 15 ms
+2026-08-25 11:07:14.445 - INFO: 
+2026-08-25 11:07:14.446 - INFO: Request received via GET, no content type specified
+2026-08-25 11:07:14.447 - INFO: Processing the following SPARQL query:
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <https://schema.org/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?city ?condition WHERE { ?city wx:name "Chicago" . ?city wx:condition ?condition . FILTER (CONTAINS(?condition, "raining") || CONTAINS(?condition, "snowing")) } LIMIT 10
+2026-08-25 11:07:14.447 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 11:07:14.449 - INFO: Query planning done in 3 ms
+2026-08-25 11:07:14.450 - INFO: Result has size 0 x 2
+2026-08-25 11:07:14.451 - INFO: Done processing query and sending result, total time was 4 ms
+2026-08-25 12:31:09.023 - INFO: 
+2026-08-25 12:31:09.025 - INFO: Request received via GET, no content type specified
+2026-08-25 12:31:09.042 - INFO: Processing the following SPARQL query:
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <https://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+
+PREFIX wx: <http://example.org/weather#> 
+SELECT ?name ?temperatureC ?condition ?humidity WHERE { ?name wx:country "United States" ; wx:name "Chicago" . ?name wx:temperatureC ?temperatureC ; wx:condition ?condition ; wx:humidity ?humidity . } LIMIT 10
+2026-08-25 12:31:09.042 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 12:31:09.045 - INFO: Query planning done in 19 ms
+2026-08-25 12:31:09.046 - INFO: Result has size 1 x 4
+2026-08-25 12:31:09.046 - INFO: Done processing query and sending result, total time was 20 ms
+2026-08-25 12:32:10.660 - INFO: 
+2026-08-25 12:32:10.661 - INFO: Request received via GET, no content type specified
+2026-08-25 12:32:10.665 - INFO: Processing the following SPARQL query:
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <https://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?city WHERE { ?city wx:temperatureC ?temp . FILTER(?city = <http://example.org/weather#Chicago>) } ORDER BY DESC(?temp) LIMIT 3
+2026-08-25 12:32:10.665 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 12:32:10.668 - INFO: Query planning done in 7 ms
+2026-08-25 12:32:10.669 - INFO: Result has size 0 x 2
+2026-08-25 12:32:10.671 - INFO: Done processing query and sending result, total time was 10 ms
+2026-08-25 12:32:10.672 - INFO: 
+2026-08-25 12:32:10.672 - INFO: Request received via GET, no content type specified
+2026-08-25 12:32:10.673 - INFO: Processing the following SPARQL query:
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <https://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+
+PREFIX wx: <http://example.org/weather#> SELECT DISTINCT ?v WHERE { ?c wx:condition ?v }
+2026-08-25 12:32:10.673 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 12:32:10.674 - INFO: Query planning done in 1 ms
+2026-08-25 12:32:10.675 - INFO: Result has size 6 x 2
+2026-08-25 12:32:10.675 - INFO: Done processing query and sending result, total time was 2 ms
+2026-08-25 12:32:10.676 - INFO: 
+2026-08-25 12:32:10.676 - INFO: Request received via GET, no content type specified
+2026-08-25 12:32:10.677 - INFO: Processing the following SPARQL query:
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <https://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+
+PREFIX wx: <http://example.org/weather#> SELECT DISTINCT ?v WHERE { ?c wx:country ?v }
+2026-08-25 12:32:10.677 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 12:32:10.678 - INFO: Query planning done in 1 ms
+2026-08-25 12:32:10.678 - INFO: Result has size 8 x 2
+2026-08-25 12:32:10.679 - INFO: Done processing query and sending result, total time was 2 ms
+2026-08-25 12:33:08.337 - INFO: 
+2026-08-25 12:33:08.338 - INFO: Request received via GET, no content type specified
+2026-08-25 12:33:08.342 - INFO: Processing the following SPARQL query:
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <https://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?city WHERE { ?city wx:name "Chicago" . ?city wx:temperatureC ?temp . } ORDER BY DESC(?temp) LIMIT 3
+2026-08-25 12:33:08.343 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 12:33:08.345 - INFO: Query planning done in 6 ms
+2026-08-25 12:33:08.346 - INFO: Result has size 1 x 2
+2026-08-25 12:33:08.347 - INFO: Done processing query and sending result, total time was 8 ms
+2026-08-25 14:03:25.739 - INFO: 
+2026-08-25 14:03:25.741 - INFO: Request received via GET, no content type specified
+2026-08-25 14:03:25.758 - INFO: Processing the following SPARQL query:
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <https://schema.org/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+
+PREFIX wx: <http://example.org/weather#> 
+SELECT ?name ?condition ?temperatureC ?humidity WHERE { ?name wx:country "US" ; wx:name "Chicago" . ?name wx:temperatureC ?temperatureC ; wx:condition ?condition ; wx:humidity ?humidity . } LIMIT 10
+2026-08-25 14:03:25.761 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 14:03:25.771 - INFO: Query planning done in 29 ms
+2026-08-25 14:03:25.771 - INFO: Result has size 0 x 4
+2026-08-25 14:03:25.773 - INFO: Done processing query and sending result, total time was 31 ms
+2026-08-25 14:03:25.776 - INFO: 
+2026-08-25 14:03:25.776 - INFO: Request received via GET, no content type specified
+2026-08-25 14:03:25.776 - INFO: Processing the following SPARQL query:
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <https://schema.org/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+
+PREFIX wx: <http://example.org/weather#> SELECT DISTINCT ?v WHERE { ?c wx:condition ?v }
+2026-08-25 14:03:25.776 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 14:03:25.776 - INFO: Query planning done in 0 ms
+2026-08-25 14:03:25.776 - INFO: Result has size 6 x 2
+2026-08-25 14:03:25.777 - INFO: Done processing query and sending result, total time was 0 ms
+2026-08-25 14:03:25.777 - INFO: 
+2026-08-25 14:03:25.777 - INFO: Request received via GET, no content type specified
+2026-08-25 14:03:25.778 - INFO: Processing the following SPARQL query:
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <https://schema.org/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+
+PREFIX wx: <http://example.org/weather#> SELECT DISTINCT ?v WHERE { ?c wx:country ?v }
+2026-08-25 14:03:25.778 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 14:03:25.778 - INFO: Query planning done in 0 ms
+2026-08-25 14:03:25.778 - INFO: Result has size 8 x 2
+2026-08-25 14:03:25.778 - INFO: Done processing query and sending result, total time was 0 ms
+2026-08-25 14:03:43.495 - INFO: 
+2026-08-25 14:03:43.496 - INFO: Request received via GET, no content type specified
+2026-08-25 14:03:43.497 - INFO: Processing the following SPARQL query:
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <https://schema.org/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+
+PREFIX wx: <http://example.org/weather#> 
+SELECT ?name ?condition ?temperatureC ?humidity WHERE { ?name wx:country "US" ; wx:name "Chicago" . ?name wx:temperatureC ?temperatureC ; wx:condition ?condition ; wx:humidity ?humidity . } LIMIT 1000000000
+2026-08-25 14:03:43.497 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 14:03:43.500 - INFO: Query planning done in 3 ms
+2026-08-25 14:03:43.500 - INFO: Result has size 0 x 4
+2026-08-25 14:03:43.500 - INFO: Done processing query and sending result, total time was 4 ms
+2026-08-25 14:04:43.727 - INFO: 
+2026-08-25 14:04:43.729 - INFO: Request received via GET, no content type specified
+2026-08-25 14:04:43.751 - INFO: Processing the following SPARQL query:
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <https://schema.org/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?city WHERE { ?city wx:temperatureC ?temp . FILTER(?city = <http://example.org/weather#Chicago>) } ORDER BY DESC(?temp) LIMIT 3
+2026-08-25 14:04:43.754 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 14:04:43.766 - INFO: Query planning done in 36 ms
+2026-08-25 14:04:43.767 - INFO: Result has size 0 x 2
+2026-08-25 14:04:43.770 - INFO: Done processing query and sending result, total time was 41 ms
+2026-08-25 14:05:35.005 - INFO: 
+2026-08-25 14:05:35.006 - INFO: Request received via GET, no content type specified
+2026-08-25 14:05:35.009 - INFO: Processing the following SPARQL query:
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <https://schema.org/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?city WHERE { ?city wx:name "Chicago" . ?city wx:temperatureC ?temp . } ORDER BY DESC(?temp) LIMIT 3
+2026-08-25 14:05:35.009 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 14:05:35.011 - INFO: Query planning done in 5 ms
+2026-08-25 14:05:35.012 - INFO: Result has size 1 x 2
+2026-08-25 14:05:35.013 - INFO: Done processing query and sending result, total time was 6 ms
+2026-08-25 14:06:47.154 - INFO: 
+2026-08-25 14:06:47.155 - INFO: Request received via GET, no content type specified
+2026-08-25 14:06:47.159 - INFO: Processing the following SPARQL query:
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <https://schema.org/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?city ?condition WHERE { ?city wx:condition ?condition . ?city wx:name "Chicago" . FILTER (regex(str(?condition), "(rain|snow)", "i")) } LIMIT 10
+2026-08-25 14:06:47.159 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 14:06:47.161 - INFO: Query planning done in 5 ms
+2026-08-25 14:06:47.164 - INFO: Result has size 0 x 2
+2026-08-25 14:06:47.164 - INFO: Done processing query and sending result, total time was 8 ms
+2026-08-25 14:07:32.978 - INFO: 
+2026-08-25 14:07:32.978 - INFO: Request received via GET, no content type specified
+2026-08-25 14:07:32.979 - INFO: Processing the following SPARQL query:
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <https://schema.org/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX csvw: <http://www.w3.org/ns/csvw#>
+
+PREFIX wx: <http://example.org/weather#> SELECT ?city ?condition WHERE { ?city wx:condition ?condition . ?city wx:name "Chicago" . FILTER (regex(str(?condition), "(Rainy|Snowy)", "i")) } LIMIT 10
+2026-08-25 14:07:32.980 - INFO: Requested media types of the result are: "application/sparql-results+json"
+2026-08-25 14:07:32.981 - INFO: Query planning done in 2 ms
+2026-08-25 14:07:32.981 - INFO: Result has size 0 x 2
+2026-08-25 14:07:32.982 - INFO: Done processing query and sending result, total time was 3 ms

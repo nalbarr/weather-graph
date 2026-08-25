@@ -1,0 +1,9 @@
+@prefix wx: <http://example.org/weather#> .
+wx:city0 a wx:City ; wx:name "Chicago" ; wx:country "United States" ; wx:temperatureC 21.0 ; wx:condition "Partly Cloudy" ; wx:humidity 58 .
+wx:city1 a wx:City ; wx:name "Paris" ; wx:country "France" ; wx:temperatureC 18.0 ; wx:condition "Cloudy" ; wx:humidity 72 .
+wx:city2 a wx:City ; wx:name "London" ; wx:country "United Kingdom" ; wx:temperatureC 15.0 ; wx:condition "Rainy" ; wx:humidity 81 .
+wx:city3 a wx:City ; wx:name "Cairo" ; wx:country "Egypt" ; wx:temperatureC 33.0 ; wx:condition "Sunny" ; wx:humidity 30 .
+wx:city4 a wx:City ; wx:name "Tokyo" ; wx:country "Japan" ; wx:temperatureC 24.0 ; wx:condition "Clear" ; wx:humidity 60 .
+wx:city5 a wx:City ; wx:name "Oslo" ; wx:country "Norway" ; wx:temperatureC 7.0 ; wx:condition "Snowy" ; wx:humidity 88 .
+wx:city6 a wx:City ; wx:name "Nairobi" ; wx:country "Kenya" ; wx:temperatureC 26.0 ; wx:condition "Partly Cloudy" ; wx:humidity 55 .
+wx:city7 a wx:City ; wx:name "Sydney" ; wx:country "Australia" ; wx:temperatureC 29.0 ; wx:condition "Sunny" ; wx:humidity 45 .
