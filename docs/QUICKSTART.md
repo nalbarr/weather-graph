@@ -68,10 +68,38 @@ Docker daemon.
 
 See [PLAN_WEATHER_QLEVER.md](../PLAN_WEATHER_QLEVER.md) for the full migration design and rationale.
 
+## Neo4j backend (separate demo, fixed Cypher, no LLM)
+
+`uv run weather-graph-neo4j` runs the same 3 questions as `uv run weather-graph`, but answers them
+with fixed, parameterized Cypher queries (`src/weather_graph/neo4j/cypher.py`) against a Neo4j
+instance — no LLM, no query generation. This is a separate entry point from the RDF demo; it does
+not go through `GRAPH_BACKEND`.
+
+```bash
+uv tool install neo4j-cli   # https://github.com/neo4j-labs/neo4j-cli — all neo4j-* targets below
+                             # go through this, never raw docker/python
+make neo4j-up                # start a local Neo4j instance (bolt://localhost:7687), password
+                              # pinned to .env's NEO4J_PASSWORD
+make neo4j-migrate           # load model/weather.ttl's 8 cities into it (weather.cypher via neo4j-cli query)
+make neo4j-health             # confirm it's actually reachable and answering queries
+uv run weather-graph-neo4j
+make neo4j-down               # stop and remove the instance when done
+```
+
+`NEO4J_URI`/`NEO4J_USERNAME`/`NEO4J_PASSWORD`/`NEO4J_DATABASE` in `.env` point both the Python
+driver (`src/weather_graph/neo4j/connection.py`, which loads `.env` itself via `python-dotenv` —
+used by `demo_neo4j.py`/tests) and `neo4j-cli` itself at the instance — `NEO4J_USERNAME` (not
+`NEO4J_USER`) is required because that's the exact name `neo4j-cli` reads from a `.env` file.
+This whole flow (`neo4j-up` → `neo4j-health` → `neo4j-migrate` → `weather-graph-neo4j` →
+`neo4j-down`) has been run for real end-to-end against a live local instance — see
+[learning_plan_neo4j.md](learning_plan_neo4j.md#verified-live-end-to-end-2026-08-27) for what was
+verified and the bugs that were found and fixed along the way. See also
+[PLAN_NEO4J.md](../plans/PLAN_NEO4J.md) for the full design.
+
 ## Test (no LLM / no network)
 
 ```bash
-uv run pytest          # 12 tests, all offline (no Ollama needed)
+uv run pytest          # offline (no Ollama needed); tests/test_neo4j.py skips without a live Neo4j
 uv run ruff check .
 ```
 
