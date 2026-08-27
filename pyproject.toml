@@ -9,12 +9,15 @@ license = { text = "MIT" }
 dependencies = [
     "beeai-framework>=0.1",
     "mellea>=0.1",
+    "neo4j>=5.24,<7",
     "pydantic>=2.7",
+    "python-dotenv>=1.0",
     "rdflib>=7.4.0,<8",
 ]
 
 [project.scripts]
 weather-graph = "weather_graph.demo:main"
+weather-graph-neo4j = "weather_graph.demo_neo4j:main"
 
 [dependency-groups]
 dev = [
