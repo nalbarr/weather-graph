@@ -8,6 +8,7 @@ license = { text = "MIT" }
 
 dependencies = [
     "beeai-framework>=0.1",
+    "kif-lib>=0.13,<1",
     "mellea>=0.1",
     "neo4j>=5.24,<7",
     "pydantic>=2.7",
@@ -18,6 +19,7 @@ dependencies = [
 [project.scripts]
 weather-graph = "weather_graph.demo:main"
 weather-graph-neo4j = "weather_graph.demo_neo4j:main"
+weather-graph-kif = "weather_graph.demo_kif:main"
 
 [dependency-groups]
 dev = [
