@@ -1,4 +1,4 @@
-.PHONY: help run test qlever-cli-check qlever-health qlever-index qlever-up qlever-down qlever-status neo4j-cli-check neo4j-health neo4j-up neo4j-status neo4j-migrate neo4j-down
+.PHONY: help run test qlever-cli-check qlever-health qlever-index qlever-up qlever-down qlever-status neo4j-cli-check neo4j-health neo4j-up neo4j-status neo4j-migrate neo4j-down kif-check
 
 export PATH := $(HOME)/.local/bin:$(PATH)
 
@@ -62,3 +62,12 @@ neo4j-migrate: ## Load model/weather.ttl's data into Neo4j (requires neo4j-up fi
 
 neo4j-down: ## Stop and remove the local Neo4j instance
 	neo4j-cli docker stop weather-graph-neo4j --rw && neo4j-cli docker delete weather-graph-neo4j --yes --force --rw
+
+# KIF (IBM's Knowledge Integration Framework) reuses the existing qlever-up server (see
+# plans/PLAN_KIF.md, "QLever wiring") rather than managing its own instance — so there's no
+# kif-up/kif-down here, just a dependency check. `qlever-cli-check`/`qlever-health` above cover
+# the actual server.
+
+kif-check: ## Verify the kif_lib dependency is installed
+	@uv run python -c "import kif_lib" >/dev/null 2>&1 || { echo "kif_lib not installed; run: uv sync" >&2; exit 1; }
+	@echo "kif_lib found: $$(uv run python -c 'import kif_lib; print(kif_lib.__version__)')"

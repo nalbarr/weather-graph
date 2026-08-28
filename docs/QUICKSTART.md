@@ -96,6 +96,28 @@ This whole flow (`neo4j-up` → `neo4j-health` → `neo4j-migrate` → `weather-
 verified and the bugs that were found and fixed along the way. See also
 [PLAN_NEO4J.md](../plans/PLAN_NEO4J.md) for the full design.
 
+## KIF backend (separate demo, fixed queries, no LLM)
+
+`uv run weather-graph-kif` runs the same 3 questions as `uv run weather-graph`, but answers them
+with fixed [KIF](https://github.com/IBM/kif) (IBM's Knowledge Integration Framework) queries
+(`src/weather_graph/kif/kif.py`) — no LLM, no query generation. Unlike the Neo4j backend, KIF
+doesn't run its own server: it reuses the *existing* QLever server via a `SPARQL_Mapping`
+(`src/weather_graph/kif/mapping.py`) that bridges `wx:` triples to KIF's Wikidata-shaped statement
+model, reusing real `wd.temperature`/`wd.weather_history` properties loosely.
+
+```bash
+make qlever-cli-check && make qlever-index && make qlever-up   # if not already running
+make kif-check                                                  # verify kif_lib is installed
+uv run weather-graph-kif
+```
+
+No new `.env` keys — KIF reads the same `QLEVER_ENDPOINT` the RDF/QLever backend already uses.
+This whole flow has been run for real end-to-end against a live QLever server — see
+[learning_plan_kif.md](learning_plan_kif.md) for what was verified, and
+[PLAN_KIF.md](../plans/PLAN_KIF.md) / [ibm_kif_analysis.md](../analysis/ibm_kif_analysis.md) for
+the full design, including two decisions that were corrected only after live-testing against the
+real `kif_lib` API.
+
 ## Test (no LLM / no network)
 
 ```bash
