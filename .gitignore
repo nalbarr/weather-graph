@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# QLever operational logs (data/qlever/) — rewritten on every `qlever index`/`qlever start`,
+# pure diff noise; the index/vocabulary/settings files alongside them are not ignored.
+data/qlever/*-log.txt
+data/qlever/*-log.jsonl
+data/qlever/*resource-usage-log.tsv

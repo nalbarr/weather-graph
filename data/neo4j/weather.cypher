@@ -1,5 +1,5 @@
 // Schema + data for the weather graph, mirroring model/weather.ttl exactly (8 flat City nodes,
-// no relationships). Run via `make neo4j-migrate` (see migrate.py).
+// no relationships). Run via `make neo4j-migrate`.
 
 CREATE CONSTRAINT city_name_unique IF NOT EXISTS
 FOR (c:City) REQUIRE c.name IS UNIQUE;

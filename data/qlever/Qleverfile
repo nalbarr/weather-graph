@@ -11,7 +11,7 @@
 # dataset should have a short DESCRIPTION, ideally with a date.
 [data]
 NAME         = weather
-GET_DATA_CMD = cp ../model/*.ttl .
+GET_DATA_CMD = cp ../../model/*.ttl .
 DESCRIPTION  = weather-graph demo dataset, model/weather.ttl (2026-08-24)
 
 # The format for INPUT_FILES should be such that `ls ${INPUT_FILES}` lists all
@@ -24,11 +24,11 @@ DESCRIPTION  = weather-graph demo dataset, model/weather.ttl (2026-08-24)
 #
 # NOTE: `model/*.ttl` (repo root) is the single source of truth for the data —
 # also used directly by the in-memory GRAPH_BACKEND. Docker only bind-mounts
-# the directory containing this Qleverfile (qlever/) as /index, so the ttl
-# files aren't visible to the indexer via a "../model/*.ttl" path. `qlever
+# the directory containing this Qleverfile (data/qlever/) as /index, so the ttl
+# files aren't visible to the indexer via a "../../model/*.ttl" path. `qlever
 # get-data` (GET_DATA_CMD, runs on the host, not in a container) stages a
-# local copy into qlever/ first; run it once before `qlever index`, and again
-# whenever model/*.ttl changes.
+# local copy into data/qlever/ first; run it once before `qlever index`, and
+# again whenever model/*.ttl changes.
 [index]
 INPUT_FILES     = *.ttl
 CAT_INPUT_FILES = cat ${INPUT_FILES}
