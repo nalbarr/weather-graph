@@ -4,8 +4,9 @@ graph or a local QLever triple store, selected by the `GRAPH_BACKEND` env var.
 `GRAPH_BACKEND=memory` (default) parses `model/*.ttl` directly into an in-memory
 `rdflib.Graph()` — no external services needed, which is what the offline test suite uses.
 `GRAPH_BACKEND=qlever` returns a `Graph` backed by `rdflib`'s `SPARQLStore`, pointed at a local
-QLever instance (see `qlever/Qleverfile` and PLAN_WEATHER_QLEVER.md). `Graph.query()` forwards the
-full SPARQL text to the store either way, so `sparql.py` needs no backend-specific code.
+QLever instance (see `data/qlever/Qleverfile` and `docs/learning_plan_sparql.md`). `Graph.query()`
+forwards the full SPARQL text to the store either way, so `sparql.py` needs no backend-specific
+code.
 """
 
 from __future__ import annotations

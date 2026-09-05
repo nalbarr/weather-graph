@@ -4,6 +4,14 @@ Standalone demo: natural-language weather questions → validated SPARQL over an
 **Mellea** (structured generation + requirements/repair) and a **BeeAI RequirementAgent** on
 **Ollama `granite4:micro`**.
 
+The running example throughout this guide — and every backend below — is the same 8-city weather
+dataset (Chicago, Paris, London, Cairo, Tokyo, Oslo, Nairobi, Sydney) answering the same 3 fixed
+questions: Chicago's current temperature/condition, the 3 hottest cities, and whether it's raining
+or snowing in Chicago. Each backend section changes *how* those questions get answered — data
+model, query language, infrastructure — never *what* is being asked. See
+[learning_plan.md](learning_plan.md) for the full walkthrough and a side-by-side comparison of the
+four approaches.
+
 ## Prerequisites
 
 | Tool | Why | Check |
@@ -42,33 +50,44 @@ validates + repairs the SPARQL, runs it against the weather graph, and answers f
 
 ## Weather graph storage backend
 
-`GRAPH_BACKEND` in `.env` selects where the weather graph lives:
+`GRAPH_BACKEND` in `.env` selects where the weather graph lives. `memory` and `qlever` store the
+exact same RDF triples and answer with the exact same `wx:` predicates — moving from one to the
+other changes *where the data lives*, not what it looks like:
 
 - **`memory`** (default) — parses `model/*.ttl` into an in-memory `rdflib.Graph()` at process start.
   No external services; this is what `uv run pytest` always uses regardless of `.env`.
-- **`qlever`** — queries a local [QLever](https://github.com/ad-freiburg/qlever) SPARQL endpoint
-  (`QLEVER_ENDPOINT`, default `http://localhost:7011`) instead, via rdflib's `SPARQLStore`.
+- **`qlever`** — the same triples, now served by a real [QLever](https://github.com/ad-freiburg/qlever)
+  SPARQL endpoint (`QLEVER_ENDPOINT`, default `http://localhost:7011`) instead of an in-process
+  graph, via rdflib's `SPARQLStore`. This is the step where "the graph" first becomes a service you
+  start/stop rather than something parsed at import time.
 
 To run against QLever:
 
 ```bash
-uv tool install qlever          # the qlever CLI (see qlever/Qleverfile for config)
-make qlever-index               # stage model/*.ttl into qlever/ and build the index (once, or
+uv tool install qlever          # the qlever CLI (see data/qlever/Qleverfile for config)
+make qlever-index               # stage model/*.ttl into data/qlever/ and build the index (once, or
                                  # whenever model/*.ttl changes)
 make qlever-up                  # start the local SPARQL server on QLEVER_ENDPOINT
 # set GRAPH_BACKEND="qlever" in .env, then run/test as usual
 make qlever-down                # stop it when done
 ```
 
-`qlever/Qleverfile` defaults to `SYSTEM = native`, which needs the compiled `qlever-index` /
+`data/qlever/Qleverfile` defaults to `SYSTEM = native`, which needs the compiled `qlever-index` /
 `qlever-server` binaries (`brew tap qlever-dev/qlever && brew install qlever-dev/qlever/qlever` on
 macOS — note this trusts a third-party tap). Switch `SYSTEM = docker` in the Qleverfile to use
 QLever's official Docker image instead, if you'd rather not trust that tap and have a working local
 Docker daemon.
 
-See [PLAN_WEATHER_QLEVER.md](../PLAN_WEATHER_QLEVER.md) for the full migration design and rationale.
+See [learning_plan_sparql.md](learning_plan_sparql.md) for the full design/rationale and what was
+verified live against a real QLever instance.
 
 ## Neo4j backend (separate demo, fixed Cypher, no LLM)
+
+Neo4j is the first genuine change of *shape*, not just location: the same 8 cities become labeled
+property graph nodes (`(:City {name, temperatureC, condition, ...})`) instead of RDF triples, and
+Cypher replaces SPARQL as the query language — see
+[learning_plan.md](learning_plan.md#comparing-the-approaches) for how the two data models compare
+side by side.
 
 `uv run weather-graph-neo4j` runs the same 3 questions as `uv run weather-graph`, but answers them
 with fixed, parameterized Cypher queries (`src/weather_graph/neo4j/cypher.py`) against a Neo4j
@@ -80,7 +99,8 @@ uv tool install neo4j-cli   # https://github.com/neo4j-labs/neo4j-cli — all ne
                              # go through this, never raw docker/python
 make neo4j-up                # start a local Neo4j instance (bolt://localhost:7687), password
                               # pinned to .env's NEO4J_PASSWORD
-make neo4j-migrate           # load model/weather.ttl's 8 cities into it (weather.cypher via neo4j-cli query)
+make neo4j-migrate           # load model/weather.ttl's 8 cities into it (data/neo4j/weather.cypher
+                              # via neo4j-cli query)
 make neo4j-health             # confirm it's actually reachable and answering queries
 uv run weather-graph-neo4j
 make neo4j-down               # stop and remove the instance when done
@@ -97,6 +117,11 @@ verified and the bugs that were found and fixed along the way. See also
 [PLAN_NEO4J.md](../plans/PLAN_NEO4J.md) for the full design.
 
 ## KIF backend (separate demo, fixed queries, no LLM)
+
+KIF changes the *lens*, not the storage: it reuses the exact same QLever server from the section
+above — no new copy of the data, no new index — but maps `wx:` triples into Wikidata-shaped
+statements (`Item`/`Property`/`Statement`) at query time. Of the four backends here, it's the one
+that adds a semantic-integration layer on top of an existing store rather than owning its own.
 
 `uv run weather-graph-kif` runs the same 3 questions as `uv run weather-graph`, but answers them
 with fixed [KIF](https://github.com/IBM/kif) (IBM's Knowledge Integration Framework) queries
@@ -152,7 +177,7 @@ Coverage without a live model:
   them, re-check `response.answer.text` (read defensively in `demo.py`) and the `@tool` surface.
 - **`GRAPH_BACKEND=qlever` but `run_query()`/the agent can't connect** → confirm `make qlever-up` is
   actually running (`make qlever-status` or `curl $QLEVER_ENDPOINT` with a `query=` param) and that
-  `QLEVER_ENDPOINT` in `.env` matches `[server] PORT` in `qlever/Qleverfile`.
+  `QLEVER_ENDPOINT` in `.env` matches `[server] PORT` in `data/qlever/Qleverfile`.
 - **`qlever index`/`qlever start` fail under `SYSTEM = docker`** → confirms nothing about your data;
   it means the local Docker daemon isn't reachable. Either start it, or switch to
   `SYSTEM = native` (see above) to avoid the Docker dependency entirely.

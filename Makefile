@@ -12,16 +12,16 @@ test: ## Run the offline test suite (no LLM / no network)
 	uv run pytest
 
 qlever-index: ## Stage model/*.ttl and (re)build the local QLever index
-	cd qlever && qlever get-data && qlever index
+	cd data/qlever && qlever get-data && qlever index
 
 qlever-up: ## Start the local QLever SPARQL server (requires qlever-index first)
-	cd qlever && qlever start
+	cd data/qlever && qlever start
 
 qlever-down: ## Stop the local QLever SPARQL server
-	cd qlever && qlever stop
+	cd data/qlever && qlever stop
 
 qlever-status: ## Show QLever process/server status
-	cd qlever && qlever status
+	cd data/qlever && qlever status
 
 qlever-cli-check: ## Verify the qlever CLI is installed
 	@command -v qlever >/dev/null 2>&1 || { echo "qlever CLI not found; install with: uv tool install qlever" >&2; exit 1; }
@@ -58,7 +58,7 @@ neo4j-status: ## Show the local Neo4j instance's status
 	@neo4j-cli docker list | grep weather-graph-neo4j || echo "weather-graph-neo4j: not running"
 
 neo4j-migrate: ## Load model/weather.ttl's data into Neo4j (requires neo4j-up first)
-	neo4j-cli query --rw --env .env < src/weather_graph/neo4j/weather.cypher
+	neo4j-cli query --rw --env .env < data/neo4j/weather.cypher
 
 neo4j-down: ## Stop and remove the local Neo4j instance
 	neo4j-cli docker stop weather-graph-neo4j --rw && neo4j-cli docker delete weather-graph-neo4j --yes --force --rw
