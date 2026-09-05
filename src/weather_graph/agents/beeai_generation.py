@@ -1,10 +1,16 @@
-"""Mellea generation layer (principles P1 + P2 from the original main.py demo).
+"""Mellea generation layer for the BeeAI backend (opt-in legacy — see beeai_agent.py).
 
 `nl_to_sparql` is a Mellea `@generative` function: its signature + docstring instruct the LLM, and
 its return-type annotation (`WeatherSparqlSpec`) is enforced via structured output. At call time we
 attach natural-language `requirements` and a `RejectionSamplingStrategy`, which is Mellea's
 instruct-validate-repair (IVR) loop. We then additionally hard-validate the produced SPARQL with our
 own pure-Python validator and repair once more if needed.
+
+This is the slower of the three generation paths in this repo — Mellea's own repair loop can issue
+up to `loop_budget` LLM calls before validation even starts, stacked under BeeAI's own agent loop —
+which is why this whole approach (this module + `beeai_tools.py` + `beeai_agent.py`) is opt-in
+behind `AGENT_BACKEND=beeai` rather than the default. See `pydantic_ai_agent.py`/`langgraph_agent.py`
+for the default/variant, which do NL -> SPARQL in a single structured-output call instead.
 
 API note: Mellea 0.7 changed the surface from the original template — `@generative` is a *bare*
 decorator, requirements/strategy are passed at call time, and the generated function takes a
@@ -19,8 +25,8 @@ import os
 from mellea import MelleaSession, generative, start_session
 from mellea.stdlib.sampling import RejectionSamplingStrategy
 
-from .models import ALLOWED_PREDICATES, WX, WeatherSparqlSpec
-from .sparql import SparqlValidationError, validate_query
+from ..models import ALLOWED_PREDICATES, WX, WeatherSparqlSpec
+from ..sparql import SparqlValidationError, validate_query
 
 # Ollama model name as Ollama itself knows it (not the "ollama:" prefixed BeeAI form).
 MELLEA_MODEL = os.environ.get("MELLEA_MODEL", "granite4:micro")

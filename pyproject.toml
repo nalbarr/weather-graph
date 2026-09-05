@@ -1,19 +1,29 @@
 [project]
 name = "weather-graph"
 version = "0.1.0"
-description = "Standalone demo: NL -> validated SPARQL over a small weather RDF graph, using Mellea (structured + self-validating generation) and a BeeAI RequirementAgent on Ollama granite4:micro."
+description = "Standalone demo: NL -> validated SPARQL over a small weather RDF graph. Default agent backend is pydantic-ai, with a LangGraph variant, on Ollama granite4:micro; the original BeeAI + Mellea approach is an opt-in extra (see the beeai dependency group and AGENT_BACKEND)."
 readme = "README.md"
 requires-python = ">=3.13"
 license = { text = "MIT" }
 
 dependencies = [
-    "beeai-framework>=0.1",
     "kif-lib>=0.13,<1",
-    "mellea>=0.1",
+    "langchain-ollama>=1.1,<2",
+    "langgraph>=1.2,<2",
     "neo4j>=5.24,<7",
     "pydantic>=2.7",
+    "pydantic-ai>=2.40,<3",
     "python-dotenv>=1.0",
     "rdflib>=7.4.0,<8",
+]
+
+[project.optional-dependencies]
+# Opt-in legacy agent backend (AGENT_BACKEND=beeai) — demoted out of the default install because
+# Mellea's instruct-validate-repair loop makes it measurably slower than the default/variant
+# backends above. Install with `uv sync --extra beeai`. See plans/PLAN_AGENTS.md.
+beeai = [
+    "beeai-framework>=0.1",
+    "mellea>=0.1",
 ]
 
 [project.scripts]
@@ -24,6 +34,7 @@ weather-graph-kif = "weather_graph.demo_kif:main"
 [dependency-groups]
 dev = [
     "pytest>=8.4",
+    "pytest-asyncio>=0.24",
     "ruff>=0.6",
     "mypy>=1.11",
 ]
@@ -41,3 +52,4 @@ line-length = 100
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+asyncio_mode = "strict"

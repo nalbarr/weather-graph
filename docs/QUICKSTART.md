@@ -1,8 +1,10 @@
 # Quick Start — weather-graph (uv + Ollama granite4:micro)
 
-Standalone demo: natural-language weather questions → validated SPARQL over an RDF graph, driven by
-**Mellea** (structured generation + requirements/repair) and a **BeeAI RequirementAgent** on
-**Ollama `granite4:micro`**.
+Standalone demo: natural-language weather questions → validated SPARQL over an RDF graph, answered
+by a selectable **agent backend** on local **Ollama `granite4:micro`**. Default is
+**pydantic-ai** (a minimal, typed agent); **LangGraph** is a selectable variant; the original
+**BeeAI RequirementAgent + Mellea** combo is still available as an explicit opt-in. See
+[learning_plan_agents.md](learning_plan_agents.md) for why, and the full comparison.
 
 The running example throughout this guide — and every backend below — is the same 8-city weather
 dataset (Chicago, Paris, London, Cairo, Tokyo, Oslo, Nairobi, Sydney) answering the same 3 fixed
@@ -21,15 +23,16 @@ four approaches.
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh   # if uv not installed
-ollama pull granite4:micro                         # the model both BeeAI and Mellea use
+ollama pull granite4:micro                         # the model every agent backend uses by default
 ```
 
 ## Setup
 
 ```bash
 cd weather-graph
-uv sync                 # installs beeai-framework, mellea, rdflib, pydantic (+ dev)
-cp .env.example .env    # defaults already point at ollama:granite4:micro
+uv sync                 # installs pydantic-ai, langgraph, langchain-ollama, rdflib (+ dev) --
+                         # NOT beeai-framework/mellea, see "BeeAI + Mellea" below
+cp .env.example .env    # defaults already point at the pydantic-ai backend on granite4:micro
 ```
 
 `uv sync` creates `.venv/` and a reproducible `uv.lock`. `.venv/` and `.env` are gitignored.
@@ -37,16 +40,48 @@ cp .env.example .env    # defaults already point at ollama:granite4:micro
 ## Run
 
 ```bash
-# The packaged demo (three questions)
+# The packaged demo (three questions), using AGENT_BACKEND from .env (default: pydantic-ai)
 uv run weather-graph
 
-# Or the flat single-file walkthrough
+# Or the flat single-file walkthrough of the default (pydantic-ai) path
 uv run python main.py
+
+# Force a specific backend regardless of .env
+make run-pydantic-ai   # default: minimal typed agent, structured output straight into
+                        # WeatherSparqlSpec
+make run-langgraph     # variant: explicit query -> answer graph
+make run-beeai          # opt-in legacy: BeeAI RequirementAgent + Mellea (needs the beeai extra
+                         # installed first -- see below)
 ```
 
-Requires Ollama running with the model set in `.env` (`AGENT_MODEL`/`MELLEA_MODEL`). Expected shape:
-the agent is forced to call `weather_graph_tool`, which asks Mellea for a `WeatherSparqlSpec`,
-validates + repairs the SPARQL, runs it against the weather graph, and answers from the rows.
+Requires Ollama running with the model set for the selected backend (`PYDANTIC_AI_MODEL` /
+`LANGGRAPH_MODEL` / `AGENT_MODEL`+`MELLEA_MODEL` in `.env`). Every backend does the same thing:
+generate a validated `WeatherSparqlSpec` from the question, run it against the weather graph, and
+answer from the rows — "query before answering" is guaranteed by construction (pydantic-ai: two
+sequential calls in Python; LangGraph: the compiled graph's linear shape; BeeAI: a
+`ConditionalRequirement`) rather than left to the model's own tool-choice. See
+[learning_plan_agents.md](learning_plan_agents.md) for the full design and what was verified live.
+
+### BeeAI + Mellea (opt-in legacy backend)
+
+The original approach this repo shipped with — kept working (unchanged code), not deleted, but
+demoted out of the default install and default backend. Verified live against Ollama +
+`granite4:micro`: this backend did not complete even the first demo question after 25+ minutes of
+continuous, actively-computing model time. Root cause (traced into
+`mellea/backends/ollama.py`): Mellea's `@generative` always requests Ollama's constrained
+JSON-schema decoding (`format=<schema>`), the same Ollama feature that also hung for pydantic-ai's
+`NativeOutput` and LangGraph's default `with_structured_output` mode — but unlike those two
+libraries, Mellea's public API has no prompt-based alternative to fall back to. See
+[learning_plan_agents.md](learning_plan_agents.md#verified-live-end-to-end-2026-09-05) for the full
+finding. If your Ollama/model combination handles `format=<schema>` requests without hanging, this
+backend should still work as designed — check with a plain `curl .../api/chat` + a `format` JSON
+schema first.
+
+```bash
+uv sync --extra beeai   # installs beeai-framework + mellea
+make beeai-check        # verify the extra is actually installed
+AGENT_BACKEND=beeai uv run weather-graph   # or: make run-beeai
+```
 
 ## Weather graph storage backend
 
@@ -152,29 +187,55 @@ uv run ruff check .
 
 Coverage without a live model:
 - **Validators + graph execution** (`test_sparql.py`, `test_models.py`) — the pure-Python rules in
-  `sparql.py` are the same ones Mellea's requirements enforce (SELECT-only, `LIMIT` present, known
-  predicates, parseable SPARQL).
-- **Mocked generation** (`test_generation_mock.py` + the `mock_generation` fixture in `conftest.py`)
-  — patches the `nl_to_sparql` generative seam and `get_session`, so the full
-  generate → validate → **repair** → execute path (including the invalid-then-valid repair loop and
-  the BeeAI tool's `answer_question`) is tested deterministically without Ollama.
+  `sparql.py` (SELECT-only, `LIMIT` present, known predicates, parseable SPARQL) are what every
+  backend's generated SPARQL is checked against, regardless of how it was generated.
+- **Shared generate → validate → repair → relevance-retry contract** (`test_agents_shared.py`) —
+  the full 7-case behavioral matrix (valid-first-try, invalid→valid repair, give-up after max
+  repairs, end-to-end execution, retry on an empty categorical mismatch, no retry without one, retry
+  on a guessed subject URI) run once against `agents/shared.py`'s `generate_and_run`, which both the
+  pydantic-ai and LangGraph backends delegate to.
+- **Per-backend wiring** (`test_agents_pydantic_ai.py`, `test_agents_langgraph.py`) — proves each
+  backend's own "query always runs before the final answer" guarantee, with the LLM client faked out.
+- **BeeAI + Mellea** (`test_agents_beeai.py` + the `mock_beeai_generation` fixture in
+  `conftest.py`) — the same 7-case matrix run against the BeeAI/Mellea path specifically (it has its
+  own repair loop, not the shared one above); skips cleanly without the `beeai` extra installed.
+- **Dispatch** (`test_agents_dispatch.py`, `test_demo.py`) — `AGENT_BACKEND` selection, and proof
+  that selecting `pydantic_ai`/`langgraph` never imports `beeai_framework`/`mellea`.
 
-## How the pieces map to the original demo
+## How the pieces map (default: pydantic-ai)
 
 | Step | File | Role |
 |------|------|------|
 | 1 Structured target | `models.py` | `WeatherSparqlSpec` |
-| 2 Mellea generative + requirements | `generation.py` | `@generative nl_to_sparql` + `RejectionSamplingStrategy` |
-| 3 BeeAI tool | `tools.py` | `@tool weather_graph_tool` |
-| 4 RequirementAgent | `agent.py` | `RequirementAgent` + `ChatModel.from_name("ollama:granite4:micro")` |
-| 5 Async run | `demo.py` / `main.py` | `agent.run(...).middleware(GlobalTrajectoryMiddleware())` |
+| 2 Shared validate/repair/relevance-retry | `agents/shared.py` | `generate_validated_spec` / `generate_and_run` |
+| 3 Structured-output generation | `agents/pydantic_ai_agent.py` | `Agent(..., output_type=PromptedOutput(WeatherSparqlSpec))` |
+| 4 Tool-free answer agent | `agents/pydantic_ai_agent.py` | A second `Agent` sees only the executed query's rows |
+| 5 Backend dispatch + async run | `agents/__init__.py`, `demo.py` / `main.py` | `agents.build_agent()` → `agent.answer(question)` |
+
+The LangGraph variant (`agents/langgraph_agent.py`) and the opt-in BeeAI+Mellea legacy path
+(`agents/beeai_agent.py` + `beeai_tools.py` + `beeai_generation.py`) follow the same 5-step shape
+with a different mechanism at steps 3-4 — see
+[learning_plan.md](learning_plan.md#comparing-the-agent-backends).
 
 ## Troubleshooting
 
-- **Model not found** → `ollama pull granite4:micro` (or set `AGENT_MODEL`/`MELLEA_MODEL` in `.env`
-  to a model you have, e.g. `qwen2.5:latest`).
+- **Model not found** → `ollama pull granite4:micro` (or set `PYDANTIC_AI_MODEL` /
+  `LANGGRAPH_MODEL` / `AGENT_MODEL`+`MELLEA_MODEL` in `.env` to a model you have, e.g.
+  `qwen2.5:latest` — each backend has its own model var).
+- **`pydantic_ai.exceptions.UnexpectedModelBehavior: Exceeded maximum output retries`** (default
+  backend) → verified live: `granite4:micro` occasionally struggles with the harder of the 3 demo
+  questions ("three hottest cities") specifically. Retry, or set `AGENT_BACKEND=langgraph` /
+  point `PYDANTIC_AI_MODEL` at a larger local model — see
+  [learning_plan_agents.md](learning_plan_agents.md) for what was verified.
+- **`beeai-check` / `run-beeai` fails with "not installed"** → run `uv sync --extra beeai` first.
+- **`run-beeai` / `AGENT_BACKEND=beeai` just hangs** → verified live on this repo's own setup, not
+  hypothetical: Mellea's Ollama backend always requests `format=<json schema>` (constrained
+  decoding), which hung indefinitely against local `granite4:micro`. Check whether your
+  Ollama/model combination handles `format=<schema>` requests at all before assuming it's just
+  slow — see [learning_plan_agents.md](learning_plan_agents.md#verified-live-end-to-end-2026-09-05).
 - **BeeAI/Mellea API drift** → pinned here to `beeai-framework 0.1.82`, `mellea 0.7.0`. If you bump
-  them, re-check `response.answer.text` (read defensively in `demo.py`) and the `@tool` surface.
+  them, re-check `response.answer.text` (read defensively in `agents/beeai_agent.py`) and the
+  `@tool` surface.
 - **`GRAPH_BACKEND=qlever` but `run_query()`/the agent can't connect** → confirm `make qlever-up` is
   actually running (`make qlever-status` or `curl $QLEVER_ENDPOINT` with a `query=` param) and that
   `QLEVER_ENDPOINT` in `.env` matches `[server] PORT` in `data/qlever/Qleverfile`.
