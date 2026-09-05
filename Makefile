@@ -1,12 +1,25 @@
-.PHONY: help run test qlever-cli-check qlever-health qlever-index qlever-up qlever-down qlever-status neo4j-cli-check neo4j-health neo4j-up neo4j-status neo4j-migrate neo4j-down kif-check
+.PHONY: help run run-pydantic-ai run-langgraph run-beeai beeai-check test qlever-cli-check qlever-health qlever-index qlever-up qlever-down qlever-status neo4j-cli-check neo4j-health neo4j-up neo4j-status neo4j-migrate neo4j-down kif-check
 
 export PATH := $(HOME)/.local/bin:$(PATH)
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-10s\033[0m %s\n", $$1, $$2}'
 
-run: ## Run the packaged demo (uv run weather-graph)
+run: ## Run the packaged demo (uv run weather-graph); AGENT_BACKEND in .env picks the agent (default: pydantic_ai)
 	uv run weather-graph
+
+run-pydantic-ai: ## Force the default pydantic-ai agent backend, regardless of .env
+	AGENT_BACKEND=pydantic_ai uv run weather-graph
+
+run-langgraph: ## Force the LangGraph variant agent backend, regardless of .env
+	AGENT_BACKEND=langgraph uv run weather-graph
+
+run-beeai: beeai-check ## Force the opt-in legacy BeeAI + Mellea agent backend, regardless of .env
+	AGENT_BACKEND=beeai uv run weather-graph
+
+beeai-check: ## Verify the optional beeai-framework/mellea extra is installed
+	@uv run python -c "import beeai_framework, mellea" >/dev/null 2>&1 || { echo "beeai-framework/mellea not installed; run: uv sync --extra beeai" >&2; exit 1; }
+	@echo "beeai-framework/mellea found"
 
 test: ## Run the offline test suite (no LLM / no network)
 	uv run pytest
