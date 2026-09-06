@@ -178,6 +178,30 @@ This whole flow has been run for real end-to-end against a live QLever server �
 the full design, including two decisions that were corrected only after live-testing against the
 real `kif_lib` API.
 
+### KIF LLM Store (second KIF backend, same interface, an LLM instead of SPARQL)
+
+Proves KIF's `Store`/`kb.filter()` interface is itself an abstraction layer: the exact same call
+shape as `kif.py` above, but answered by a local Ollama model (`granite4:micro`) synthesizing
+Wikidata-shaped statements instead of a SPARQL query — no local data of its own, and it will not
+agree with the SPARQL answers (that mismatch is the point; see
+[learning_plan_kif_llm.md](learning_plan_kif_llm.md)). Upstream `kif-llm-store` isn't
+pip-installable as documented (broken package metadata, several real bugs), so a small patched
+copy is vendored in-repo (`src/weather_graph/kif/_vendor/`) — the one genuinely new dependency,
+`nest-asyncio`, is the `kif-llm` extra.
+
+```bash
+uv sync --extra kif-llm   # installs nest-asyncio; the LLM_Store code itself is vendored
+make kif-llm-check        # verify the vendored package imports
+ollama pull granite4:micro   # if you haven't already (KIF_LLM_MODEL in .env, default granite4:micro)
+make qlever-cli-check && make qlever-index && make qlever-up   # for the SPARQL side of the comparison
+uv run weather-graph-kif-llm
+```
+
+See [learning_plan_kif_llm.md](learning_plan_kif_llm.md) for real captured output (three runs,
+showing the LLM side's answers vary run to run and never match the synthetic data) and
+[PLAN_KIF_LLM.md](../plans/PLAN_KIF_LLM.md) for the full design, including the upstream-packaging
+problem and how it was resolved.
+
 ## Test (no LLM / no network)
 
 ```bash
@@ -242,3 +266,12 @@ with a different mechanism at steps 3-4 — see
 - **`qlever index`/`qlever start` fail under `SYSTEM = docker`** → confirms nothing about your data;
   it means the local Docker daemon isn't reachable. Either start it, or switch to
   `SYSTEM = native` (see above) to avoid the Docker dependency entirely.
+- **`kif-llm-check` / `uv run weather-graph-kif-llm` fails with "not installed"** → run
+  `uv sync --extra kif-llm` first (installs `nest-asyncio`; the `LLM_Store` code itself is vendored,
+  see the KIF LLM Store section above).
+- **`weather-graph-kif-llm`'s `[LLM Store]` column prints `no answer.` or a wildly different value
+  each run** → expected, not a bug: verified live, `LLM_Store`'s output parser can raise on a reply
+  with no digits in it (caught and turned into `no answer.`) and its numeric answers vary run to
+  run (a real, observed `1000000.0°C` alongside a plausible `32.0°C` in back-to-back runs) — see
+  [learning_plan_kif_llm.md](learning_plan_kif_llm.md) for why this is the actual finding, not
+  noise to fix.

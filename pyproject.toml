@@ -26,10 +26,20 @@ beeai = [
     "mellea>=0.1",
 ]
 
+# Opt-in second KIF Store backend (`uv run weather-graph-kif-llm`), an LLM standing in for the
+# SPARQL store. Install with `uv sync --extra kif-llm`. Just the one entry: the `LLM_Store` code
+# itself is vendored under src/weather_graph/kif/_vendor/ (upstream is not pip-installable — see
+# that package's header and analysis/kif_llm_analysis.md), and its other real dependencies
+# (langchain-ollama, httpx, tenacity) are already core dependencies at compatible versions.
+kif-llm = [
+    "nest-asyncio>=1.6.0,<2.0.0",
+]
+
 [project.scripts]
 weather-graph = "weather_graph.demo:main"
 weather-graph-neo4j = "weather_graph.demo_neo4j:main"
 weather-graph-kif = "weather_graph.demo_kif:main"
+weather-graph-kif-llm = "weather_graph.demo_kif_llm:main"
 
 [dependency-groups]
 dev = [
@@ -49,6 +59,10 @@ packages = ["src/weather_graph"]
 [tool.ruff]
 target-version = "py313"
 line-length = 100
+# Vendored upstream source (IBM/kif-llm, Apache-2.0) — kept as close to verbatim as possible so it
+# stays diffable against upstream, so it is not held to this repo's lint rules. See that package's
+# header for the three deliberate patches.
+extend-exclude = ["src/weather_graph/kif/_vendor"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

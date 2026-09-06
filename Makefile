@@ -1,4 +1,4 @@
-.PHONY: help run run-pydantic-ai run-langgraph run-beeai beeai-check test qlever-cli-check qlever-health qlever-index qlever-up qlever-down qlever-status neo4j-cli-check neo4j-health neo4j-up neo4j-status neo4j-migrate neo4j-down kif-check
+.PHONY: help run run-pydantic-ai run-langgraph run-beeai beeai-check test qlever-cli-check qlever-health qlever-index qlever-up qlever-down qlever-status neo4j-cli-check neo4j-health neo4j-up neo4j-status neo4j-migrate neo4j-down kif-check kif-llm-check
 
 export PATH := $(HOME)/.local/bin:$(PATH)
 
@@ -84,3 +84,12 @@ neo4j-down: ## Stop and remove the local Neo4j instance
 kif-check: ## Verify the kif_lib dependency is installed
 	@uv run python -c "import kif_lib" >/dev/null 2>&1 || { echo "kif_lib not installed; run: uv sync" >&2; exit 1; }
 	@echo "kif_lib found: $$(uv run python -c 'import kif_lib; print(kif_lib.__version__)')"
+
+# Second KIF Store backend (weather_graph.kif.llm_store): an LLM standing in for the SPARQL store,
+# via a vendored, patched copy of kif-llm-store (upstream isn't pip-installable, see
+# src/weather_graph/kif/_vendor/kif_llm_store/__init__.py) plus the one real extra dependency,
+# nest-asyncio. No server lifecycle target: it's a local Ollama call, not a new service.
+
+kif-llm-check: ## Verify the vendored kif-llm-store package imports and the kif-llm extra is installed
+	@uv run python -c "from weather_graph.kif._vendor.kif_llm_store import LLM_Store" >/dev/null 2>&1 || { echo "vendored kif-llm-store failed to import (see src/weather_graph/kif/_vendor/); run: uv sync --extra kif-llm" >&2; exit 1; }
+	@echo "vendored kif-llm-store found and importable"

@@ -55,6 +55,17 @@ assumed from the README/tutorial).
 `.env`'s `GRAPH_BACKEND="qlever"` means it's this repo's actual configured default backend, not a
 one-off validation instance.
 
+## A second KIF Store backend
+
+Everything above is the SPARQL/QLever-backed `Store` — `kif.py`. A second, LLM-backed `Store`
+(`llm_store.py`, IBM's `kif-llm-store` `LLM_Store` over local Ollama) now sits alongside it,
+answering the same 3 questions from the model's own knowledge instead of `model/weather.ttl`'s
+synthetic data, through the identical `Store`/`kb.filter()` call shape. See
+[learning_plan_kif_llm.md](learning_plan_kif_llm.md) and
+[PLAN_KIF_LLM.md](../plans/PLAN_KIF_LLM.md) for the design, why the answers deliberately disagree,
+and a real upstream-packaging problem (not installable as documented) that was worked around by
+vendoring a patched copy in-repo.
+
 ## Design corrections found only by live-testing (not guessable from docs alone)
 
 1. `wd.country`'s declared datatype is `Item`, not `String` — despite reading as a clean fit by
