@@ -2,10 +2,11 @@
 
 This is the entry point into weather-graph's backend work. It doesn't replace
 [learning_plan_sparql.md](learning_plan_sparql.md), [learning_plan_neo4j.md](learning_plan_neo4j.md),
-[learning_plan_kif.md](learning_plan_kif.md), or [learning_plan_agents.md](learning_plan_agents.md)
-— each of those is the detailed, backend-specific record (scope decisions, what was built, what
-broke and got fixed, live-verification logs). This document is the narrative that ties them
-together and the comparisons none of them attempt on their own.
+[learning_plan_kif.md](learning_plan_kif.md), [learning_plan_kif_llm.md](learning_plan_kif_llm.md),
+or [learning_plan_agents.md](learning_plan_agents.md) — each of those is the detailed,
+backend-specific record (scope decisions, what was built, what broke and got fixed,
+live-verification logs). This document is the narrative that ties them together and the
+comparisons none of them attempt on their own.
 
 Two independent axes are covered here: **where the weather data lives** (`memory`/`qlever`/`neo4j`/
 `kif` — "Comparing the approaches" below) and **how an NL question gets turned into an answer**
@@ -197,6 +198,9 @@ below the "slower" label this plan started with.
 - [plans/PLAN_DATA_MIGRATIONS.md](../plans/PLAN_DATA_MIGRATIONS.md) — the plan that produced this
   document, the `data/qlever/` + `data/neo4j/` reorganization, and the SPARQL/QLever test-coverage
   fix.
+- [plans/PLAN_KIF_LLM.md](../plans/PLAN_KIF_LLM.md), [learning_plan_kif_llm.md](learning_plan_kif_llm.md)
+  — a second KIF `Store` backend, `kb.filter()` pointed at an LLM instead of SPARQL/QLever, and why
+  the two backends' answers are expected to disagree.
 - [plans/PLAN_NEO4J.md](../plans/PLAN_NEO4J.md), [plans/PLAN_KIF.md](../plans/PLAN_KIF.md) — the
   original design docs for the Neo4j and KIF ports, including the scope decisions each port made
   before implementation.
