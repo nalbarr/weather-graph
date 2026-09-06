@@ -243,7 +243,8 @@ with a different mechanism at steps 3-4 — see
 
 Want the visual/architectural view before running anything? See
 [learning_plan_drawio.md](learning_plan_drawio.md) — a draw.io component diagram of the whole
-system plus a sequence diagram per scenario above, under `diagrams/`.
+system plus a sequence diagram per scenario above, under `diagrams/`, with embedded `.png`
+previews so you can look before opening draw.io.
 
 ## Troubleshooting
 

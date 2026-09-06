@@ -1,4 +1,4 @@
-.PHONY: help run run-pydantic-ai run-langgraph run-beeai beeai-check test qlever-cli-check qlever-health qlever-index qlever-up qlever-down qlever-status neo4j-cli-check neo4j-health neo4j-up neo4j-status neo4j-migrate neo4j-down kif-check kif-llm-check diagrams-check
+.PHONY: help run run-pydantic-ai run-langgraph run-beeai beeai-check test qlever-cli-check qlever-health qlever-index qlever-up qlever-down qlever-status neo4j-cli-check neo4j-health neo4j-up neo4j-status neo4j-migrate neo4j-down kif-check kif-llm-check diagrams-check drawio-cli-check diagrams-export
 
 export PATH := $(HOME)/.local/bin:$(PATH)
 
@@ -111,3 +111,34 @@ diagrams-check: ## Verify every diagrams/*.drawio file is well-formed XML
 		uv run python -c "import sys, xml.dom.minidom as minidom; minidom.parse(sys.argv[1])" "$$f" || { echo "malformed: $$f" >&2; exit 1; }; \
 	done; \
 	echo "$${#files[@]} diagrams/*.drawio files are well-formed XML"
+
+# PNG export (plans/PLAN_EXPORT_PNG.md): renders each diagrams/*.drawio to diagrams/*.png via the
+# locally-installed draw.io desktop app's CLI export mode, so the diagrams are viewable (and
+# embeddable in docs/learning_plan_drawio.md) without opening draw.io/diagrams.net first. Optional,
+# export-only dependency — never required to view/edit the .drawio XML sources themselves.
+# CLI flags confirmed against a real `draw.io --help` (v31.4.4); recheck if yours differs.
+
+drawio-cli-check: ## Verify the draw.io desktop CLI is installed (needed for `make diagrams-export` only)
+	@command -v drawio >/dev/null 2>&1 && { echo "drawio CLI found: $$(command -v drawio)"; exit 0; }; \
+	if [ -x "/Applications/draw.io.app/Contents/MacOS/draw.io" ]; then \
+		echo "drawio CLI found: /Applications/draw.io.app/Contents/MacOS/draw.io"; \
+	else \
+		echo "draw.io desktop not found; install with: brew install --cask drawio (or https://github.com/jgraph/drawio-desktop/releases)" >&2; \
+		exit 1; \
+	fi
+
+diagrams-export: drawio-cli-check ## Export every diagrams/*.drawio file to a same-named .png
+	@drawio_bin="$$(command -v drawio || echo /Applications/draw.io.app/Contents/MacOS/draw.io)"; \
+	shopt -s nullglob; \
+	files=(diagrams/*.drawio); \
+	if [ $${#files[@]} -eq 0 ]; then \
+		echo "no diagrams/*.drawio files found" >&2; \
+		exit 1; \
+	fi; \
+	for f in "$${files[@]}"; do \
+		out="$${f%.drawio}.png"; \
+		"$$drawio_bin" --export --format png --border 10 --width 1600 --output "$$out" "$$f" >/dev/null 2>&1 \
+			&& echo "exported: $$out" \
+			|| { echo "export failed: $$f" >&2; exit 1; }; \
+	done; \
+	echo "$${#files[@]} diagrams/*.drawio files exported to .png"

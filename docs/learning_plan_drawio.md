@@ -20,6 +20,13 @@ corrupted/truncated write). It does **not** check visual correctness (overlappin
 labels) or style consistency against the shared guide — those were checked once, by hand, in the
 reconciliation pass below, and stay a human review step for any future edit.
 
+For a quick look without opening draw.io at all, every diagram also has a static `.png` preview
+under `diagrams/`, embedded inline below (`## Diagram previews`) — see `plans/PLAN_EXPORT_PNG.md`
+for how those are generated (`make diagrams-export`, via the draw.io desktop CLI). The `.drawio`
+file is always the editable source of truth; the `.png` is a generated preview that **can go
+stale** — there's no auto-regeneration hook, so re-run `make diagrams-export` after editing any
+`.drawio` file and this doc's images won't reflect the edit until you do.
+
 ## The scenario catalog
 
 Six major runtime scenarios, matching `docs/run_book.md`'s "Quick reference: what needs what"
@@ -98,6 +105,63 @@ A few notable, real (not hypothetical) runtime behaviors called out on the diagr
   confirmed by reading `demo_neo4j.py`/`neo4j/cypher.py` directly (fixed, parameterized Cypher over
   Bolt only).
 
+## Diagram previews (PNG)
+
+Static previews, generated via `make diagrams-export` (`plans/PLAN_EXPORT_PNG.md`) — draw.io
+desktop's CLI export mode, `--border 10 --width 1600`, run against every `diagrams/*.drawio` file
+above. Each image below was opened and checked by hand before being embedded here (a two-tier
+verification: the user confirmed the component diagram's export first, then every remaining
+sequence diagram was checked the same way) — findings are reported honestly per file, not assumed
+clean because the export command exited `0`.
+
+### Component diagram
+
+![component diagram](../diagrams/component_diagram.png)
+
+Known issue, carried over from the style-reconciliation pass below: a few edge labels overlap where
+multiple edges converge (near `agents/__init__.py`'s fan-out, and around the
+`neo4j/connection.py`/`data/neo4j/weather.cypher` reference edge) — legible in isolation, crowded in
+those spots. This is a `.drawio` content/layout density issue, not an export problem (confirmed by
+re-exporting with a larger `--border`, which didn't change internal spacing) — flagged, not fixed,
+per `plans/PLAN_EXPORT_PNG.md`'s non-goals; a future layout pass on `component_diagram.drawio` could
+address it.
+
+### Sequence diagrams
+
+![default pydantic-ai run](../diagrams/sequence_run_pydantic_ai.png)
+
+Clean — no overlapping labels found.
+
+![LangGraph run](../diagrams/sequence_run_langgraph.png)
+
+Clean — no overlapping labels found.
+
+![BeeAI run](../diagrams/sequence_run_beeai.png)
+
+Minor, cosmetic only: the `build_agent()` message label (long — it includes the full
+`RequirementAgent(...)` construction call) runs right up against the diagram's left frame edge.
+Still fully legible; not clipped.
+
+![KIF/QLever demo](../diagrams/sequence_kif_sparql.png)
+
+Clean — no overlapping labels found.
+
+![KIF-LLM demo](../diagrams/sequence_kif_llm.png)
+
+Clean — no overlapping labels found, including in the dual-column SPARQL/LLM comparison.
+
+![Neo4j demo](../diagrams/sequence_neo4j.png)
+
+**Real issue, found by this verification pass, not fixed here** (per `plans/PLAN_EXPORT_PNG.md`'s
+non-goal against re-laying-out any `.drawio` content): the `loop [3 fixed demo questions: ...]`
+fragment label overlaps the first message label inside the loop
+(`city_weather() / hottest_cities() / city_condition()`), producing garbled, partly illegible text
+in that one spot. Everything else in the diagram — the precondition note, the Bolt call, the
+`data/neo4j/weather.cypher` reference edge, the "no Ollama, no QLever" annotation — reads cleanly.
+Fixing this needs a `sequence_neo4j.drawio` edit (move the fragment box down or the first message
+label right) — left for a follow-up, the same way the component diagram's known issue was left
+above.
+
 ## Style-reconciliation pass (orchestrator)
 
 Per `plans/PLAN_DRAWIO.md` objective 5, sub agent 1 authored a single shared style guide (§5 of
@@ -141,6 +205,8 @@ consistent as authored.
 ## See also
 
 [../plans/PLAN_DRAWIO.md](../plans/PLAN_DRAWIO.md) — the plan this doc and the diagrams implement;
+[../plans/PLAN_EXPORT_PNG.md](../plans/PLAN_EXPORT_PNG.md) — the plan behind the PNG previews above
+and `make diagrams-export`/`make drawio-cli-check`;
 [../analysis/drawio_scenarios_analysis.md](../analysis/drawio_scenarios_analysis.md) — the full
 Makefile inventory, per-scenario import-chain trace, component inventory, and the shared style
 guide referenced throughout this doc; [run_book.md](run_book.md) — the captured terminal session
