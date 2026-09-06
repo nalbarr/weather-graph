@@ -208,3 +208,6 @@ below the "slower" label this plan started with.
   [analysis/neo4j_analysis.md](../analysis/neo4j_analysis.md),
   [analysis/ibm_kif_analysis.md](../analysis/ibm_kif_analysis.md) — the technical grounding each
   port was built from.
+- [plans/PLAN_DRAWIO.md](../plans/PLAN_DRAWIO.md), [learning_plan_drawio.md](learning_plan_drawio.md)
+  — a visual counterpart to this document: one draw.io component diagram of the whole system plus
+  one sequence diagram per major runtime scenario, under [../diagrams/](../diagrams/).
