@@ -241,6 +241,10 @@ The LangGraph variant (`agents/langgraph_agent.py`) and the opt-in BeeAI+Mellea 
 with a different mechanism at steps 3-4 — see
 [learning_plan.md](learning_plan.md#comparing-the-agent-backends).
 
+Want the visual/architectural view before running anything? See
+[learning_plan_drawio.md](learning_plan_drawio.md) — a draw.io component diagram of the whole
+system plus a sequence diagram per scenario above, under `diagrams/`.
+
 ## Troubleshooting
 
 - **Model not found** → `ollama pull granite4:micro` (or set `PYDANTIC_AI_MODEL` /

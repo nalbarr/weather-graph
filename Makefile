@@ -1,4 +1,4 @@
-.PHONY: help run run-pydantic-ai run-langgraph run-beeai beeai-check test qlever-cli-check qlever-health qlever-index qlever-up qlever-down qlever-status neo4j-cli-check neo4j-health neo4j-up neo4j-status neo4j-migrate neo4j-down kif-check kif-llm-check
+.PHONY: help run run-pydantic-ai run-langgraph run-beeai beeai-check test qlever-cli-check qlever-health qlever-index qlever-up qlever-down qlever-status neo4j-cli-check neo4j-health neo4j-up neo4j-status neo4j-migrate neo4j-down kif-check kif-llm-check diagrams-check
 
 export PATH := $(HOME)/.local/bin:$(PATH)
 
@@ -93,3 +93,21 @@ kif-check: ## Verify the kif_lib dependency is installed
 kif-llm-check: ## Verify the vendored kif-llm-store package imports and the kif-llm extra is installed
 	@uv run python -c "from weather_graph.kif._vendor.kif_llm_store import LLM_Store" >/dev/null 2>&1 || { echo "vendored kif-llm-store failed to import (see src/weather_graph/kif/_vendor/); run: uv sync --extra kif-llm" >&2; exit 1; }
 	@echo "vendored kif-llm-store found and importable"
+
+# Architecture diagrams (plans/PLAN_DRAWIO.md): one component diagram plus one sequence diagram
+# per major runtime scenario, hand-authored as draw.io/diagrams.net mxGraph XML under diagrams/.
+# No server lifecycle, no rendering pipeline — diagrams-check only guards against a corrupted or
+# truncated .drawio file; it cannot check visual correctness or style consistency (see
+# docs/learning_plan_drawio.md).
+
+diagrams-check: ## Verify every diagrams/*.drawio file is well-formed XML
+	@shopt -s nullglob; \
+	files=(diagrams/*.drawio); \
+	if [ $${#files[@]} -eq 0 ]; then \
+		echo "no diagrams/*.drawio files found" >&2; \
+		exit 1; \
+	fi; \
+	for f in "$${files[@]}"; do \
+		uv run python -c "import sys, xml.dom.minidom as minidom; minidom.parse(sys.argv[1])" "$$f" || { echo "malformed: $$f" >&2; exit 1; }; \
+	done; \
+	echo "$${#files[@]} diagrams/*.drawio files are well-formed XML"

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="weather-graph sub agent 5" version="24.0.0">
+  <diagram id="sequence_neo4j" name="Neo4j demo sequence">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Neo4j demo — uv run weather-graph-neo4j" style="text;html=1;fontFamily=Helvetica;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="600" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Precondition note box (per §5.3) -->
+        <mxCell id="precondition_note" value="Preconditions:&#10;make neo4j-cli-check&#10;make neo4j-up&#10;make neo4j-migrate&#10;(optional) make neo4j-health" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontColor=#000000;fontFamily=Helvetica;fontSize=10;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="380" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Data/model file box (optional, per task instructions) -->
+        <mxCell id="cypher_file_box" value="data/neo4j/weather.cypher" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontColor=#000000;fontFamily=Helvetica;fontSize=12;fontStyle=1;verticalAlign=middle;align=center;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="920" y="60" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cypher_file_edge" value="loaded via neo4j-cli during neo4j-migrate&#10;(precondition-time, not a runtime edge)" style="edgeStyle=none;html=1;endArrow=open;strokeColor=#666666;strokeWidth=1;dashed=1;fontFamily=Helvetica;fontSize=10;align=right;verticalAlign=middle;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1000" y="120" as="sourcePoint" />
+            <mxPoint x="1000" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Lifeline headers (y=200, height=40, width=160, centers 220px apart) -->
+        <mxCell id="dev_header" value="Developer (terminal)" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;fontColor=#333333;fontFamily=Helvetica;fontSize=12;fontStyle=1;verticalAlign=middle;align=center;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="160" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="demo_header" value="demo_neo4j.py" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontColor=#000000;fontFamily=Helvetica;fontSize=12;fontStyle=1;verticalAlign=middle;align=center;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="260" y="200" width="160" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cypher_header" value="neo4j/cypher.py" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontColor=#000000;fontFamily=Helvetica;fontSize=12;fontStyle=1;verticalAlign=middle;align=center;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="480" y="200" width="160" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn_header" value="neo4j/connection.py" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontColor=#000000;fontFamily=Helvetica;fontSize=12;fontStyle=1;verticalAlign=middle;align=center;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="700" y="200" width="160" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="neo4j_header" value="Neo4j" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontColor=#000000;fontFamily=Helvetica;fontSize=12;fontStyle=1;verticalAlign=middle;align=center;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="920" y="200" width="160" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Lifeline vertical dashed lines (header bottom y=240 to bottom margin y=800) -->
+        <mxCell id="dev_line" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#666666;strokeWidth=1;dashed=1;dashPattern=4 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="240" as="sourcePoint" />
+            <mxPoint x="120" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="demo_line" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#666666;strokeWidth=1;dashed=1;dashPattern=4 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="240" as="sourcePoint" />
+            <mxPoint x="340" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cypher_line" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#666666;strokeWidth=1;dashed=1;dashPattern=4 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="240" as="sourcePoint" />
+            <mxPoint x="560" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn_line" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#666666;strokeWidth=1;dashed=1;dashPattern=4 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="780" y="240" as="sourcePoint" />
+            <mxPoint x="780" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="neo4j_line" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#666666;strokeWidth=1;dashed=1;dashPattern=4 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1000" y="240" as="sourcePoint" />
+            <mxPoint x="1000" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- m1: trigger command, Developer -> demo_neo4j.py, y=320 -->
+        <mxCell id="m1" value="uv run weather-graph-neo4j" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#000000;strokeWidth=1;dashed=0;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="320" as="sourcePoint" />
+            <mxPoint x="340" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Loop fragment covering the 3 fixed demo questions -->
+        <mxCell id="loop_fragment" value="" style="rounded=0;dashed=1;strokeColor=#666666;fillColor=none;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="350" width="840" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="loop_label" value="loop [3 fixed demo questions: city_weather(), hottest_cities(), city_condition()]" style="text;html=1;fontFamily=Helvetica;fontSize=10;fontStyle=2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="256" y="354" width="600" height="16" as="geometry" />
+        </mxCell>
+
+        <!-- m2: demo_neo4j.py -> neo4j/cypher.py, y=380, in-process call -->
+        <mxCell id="m2" value="city_weather() / hottest_cities() / city_condition()" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#000000;strokeWidth=1;dashed=0;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="380" as="sourcePoint" />
+            <mxPoint x="560" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- m3: neo4j/cypher.py -> neo4j/connection.py, y=440, in-process call (_run() -> get_driver(), database()) -->
+        <mxCell id="m3" value="_run(): get_driver(), database()" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#000000;strokeWidth=1;dashed=0;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="440" as="sourcePoint" />
+            <mxPoint x="780" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- m4: neo4j/connection.py -> Neo4j, y=500, Bolt edge -->
+        <mxCell id="m4" value="driver.execute_query(text, parameters_=params, database_=database(), routing_=&quot;r&quot;)" style="edgeStyle=none;html=1;endArrow=open;strokeColor=#9673A6;strokeWidth=1.5;dashed=0;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="780" y="500" as="sourcePoint" />
+            <mxPoint x="1000" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- m5: return, Neo4j -> neo4j/connection.py, y=560, Bolt color dashed -->
+        <mxCell id="m5" value="records" style="edgeStyle=none;html=1;endArrow=open;strokeColor=#9673A6;strokeWidth=1.5;dashed=1;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1000" y="560" as="sourcePoint" />
+            <mxPoint x="780" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- m6: return, neo4j/connection.py -> neo4j/cypher.py, y=620, in-process color dashed -->
+        <mxCell id="m6" value="rows" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#000000;strokeWidth=1;dashed=1;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="780" y="620" as="sourcePoint" />
+            <mxPoint x="560" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- m7: return, neo4j/cypher.py -> demo_neo4j.py, y=680, in-process color dashed -->
+        <mxCell id="m7" value="formatted result" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#000000;strokeWidth=1;dashed=1;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="680" as="sourcePoint" />
+            <mxPoint x="340" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- m8: return, demo_neo4j.py -> Developer (terminal), y=740, after loop, in-process color dashed -->
+        <mxCell id="m8" value="printed weather answers" style="edgeStyle=none;html=1;endArrow=block;strokeColor=#000000;strokeWidth=1;dashed=1;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=bottom;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="740" as="sourcePoint" />
+            <mxPoint x="120" y="740" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Annotation: no LLM / no SPARQL in this path -->
+        <mxCell id="no_llm_note" value="No Ollama, no QLever — fixed, parameterized Cypher only." style="text;html=1;fontFamily=Helvetica;fontSize=10;fontStyle=2;align=left;verticalAlign=top;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="440" y="770" width="440" height="20" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
